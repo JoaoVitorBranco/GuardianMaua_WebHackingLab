@@ -13,9 +13,8 @@ def encrypt_sha256(text):
 
     return encrypted_text
 
-
-hash_user = "87640e9e4f758d223c6fcf87e1398727a9b8c4945baeb6a28346e04e9b2f3497"
-hash_pass = "1df1854015e31ca286d015345eaff29a6c6073f70984a3a746823d4cac16b075"
+hash_user = "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918"
+hash_pass = "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918"
 
 app = Flask(__name__)
 
@@ -34,7 +33,7 @@ def login():
 
 @app.route('/dashboard')
 def dashboard():
-    return "Parabéns! Você concluiu o exercício 1 😁"
+    return "Parabéns! Você concluiu o exercício 0 😁"
 
 if __name__ == '__main__':
     app.run(debug=True)
