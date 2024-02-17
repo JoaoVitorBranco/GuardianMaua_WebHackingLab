@@ -25,8 +25,8 @@ def index():
 
 @app.route('/login', methods=['POST'])
 def login():
-    username = request.form['username']
-    password = request.form['password']
+    username = request.form['nome']
+    password = request.form['senha']
     if encrypt_sha256(username) != hash_user:
         return render_template('login.html', message='Invalid username.')
     
