@@ -24,8 +24,8 @@ def index():
 
 @app.route('/login', methods=['POST'])
 def login():
-    username = request.form['user']
-    password = request.form['pass']
+    username = request.form['username']
+    password = request.form['password']
     if encrypt_sha256(username) == hash_user and encrypt_sha256(password) == hash_pass:
         return redirect(url_for('dashboard'))
     else:
