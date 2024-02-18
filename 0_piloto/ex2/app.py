@@ -13,7 +13,6 @@ def encrypt_sha256(text):
 
     return encrypted_text
 
-
 hash_user = "00e3fa7ad96d08bd0705322ca2a30874de09aedb096c2e7fb449282131bba1e7"
 hash_pass = "ad4941386c090ac54142d38b390d313075deff4d873a1c82e3a25540cf611127"
 
