@@ -27,9 +27,9 @@ class Nota:
 
 # Lista de notas (simulada)
 notas = [
-    Nota("0", "hacked.txt", "Parabéns, você concluiu o exercício 0 de IDOR 🚪!", "admin"),
-    Nota("1", "todo.txt", "CTF do THM chamado BoilerCTF, Continuar a IC e Ir na academia", "caiogomes"),
-    Nota("2", "Tarefa hacker", "Tente acessar uma nota do perfil do administrador", "myself"),
+    Nota("YWRtaW4w", "hacked.txt", "Parabéns, você concluiu o exercício 1 de IDOR 🚪!", "admin"),
+    Nota("Y2Fpb2dvbWVzMA==", "todo.txt", "CTF do THM chamado BoilerCTF, Continuar a IC e Ir na academia", "caiogomes"),
+    Nota("bXlzZWxmMA==", "Tarefa hacker", "Tente acessar uma nota do perfil do administrador", "myself"),
 ]
 
 @app.route('/')
@@ -48,7 +48,7 @@ def criar_nota():
     if request.method == 'POST':
         titulo = request.form['titulo']
         conteudo = request.form['conteudo']
-        nova_nota = Nota(f"{len(notas)}", titulo, conteudo, "myself")
+        nova_nota = Nota(encrypt_base64(f"myself{len(notas)-2}"), titulo, conteudo, "myself")
         notas.append(nova_nota)
         return redirect(url_for('index'))
     return render_template('criar_nota.html')

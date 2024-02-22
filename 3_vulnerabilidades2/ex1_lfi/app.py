@@ -10,6 +10,9 @@ def path_adaptation(full_path, path_to_find):
     full_path = '/'.join(full_path) + '/' + path_to_find.replace("../", "")
     return full_path
 
+def filter_query(path):
+    return path.replace("../", "")
+
 app = Flask(__name__)
 path = f'{os.path.dirname(os.path.abspath(__file__))}\\livros'.replace("\\", "/")
 
@@ -25,7 +28,7 @@ def ler_livro():
     if livro:
         content = ""
         try:
-            path_param = livro
+            path_param = filter_query(livro)
             with open(path_adaptation(path, path_param), 'r') as f:
                 content = f.read()
             return content
