@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comentários</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Comentários</h1>
+    <form id="commentForm">
+        <label for="comment">Escreva um comentário:</label>
+        <input type="text" id="comment" name="comment" required>
+        <button type="submit">Enviar</button>
+    </form>
+    <div id="comments">
+        {% for comment in comments %}
+            <div>{{ comment }}</div>
+        {% endfor %}
+    </div>
+
+    <script>
+        document.getElementById('commentForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const response = await fetch('/add_comment', {
+                method: 'POST',
+                body: formData
+            });
+            const data = await response.json();
+            if (data.success) {
+                const comment = data.comment;
+                const commentsDiv = document.getElementById('comments');
+                const commentDiv = document.createElement('div');
+                commentDiv.textContent = comment;
+                commentsDiv.appendChild(commentDiv);
+                document.getElementById('comment').value = '';
+            } else {
+                alert(data.error);
+            }
+        });
+    </script>
+</body>
+</html>
