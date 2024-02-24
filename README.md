@@ -14,12 +14,12 @@ pip install -r requirements.txt
 
 3. Run the following command to start the server:
 ```bash
-python3 $path_to_exercise\app.py
+python $path_to_exercise\app.py
 ```
 
 - _ex:_
 ```bash
-python3 0_piloto\ex0\app.py
+python 0_piloto\ex0\app.py
 ```
 
 4. Open the browser and navigate to the following URL:
