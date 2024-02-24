@@ -26,3 +26,13 @@ python3 0_piloto\\ex0\\app.py
 ```bash
 http://localhost:8000
 ```
+
+# Challenges in Replit
+1. Trade the "Run File": click on 3 dots, select "show hidden files";
+2. Search for _.replit_ file
+3. Change _main.py_ file to the _app.py_ file that you want to run
+  - _ex_: for _ex0_rce_, insert "/3_vulnerabilidades2/ex0_rce/app.py"
+
+## Challenges in replit
+- ex0_rce
+- ex1_rce
