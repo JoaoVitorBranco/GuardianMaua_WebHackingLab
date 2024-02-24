@@ -8,18 +8,18 @@ Explore simulated server scenarios in the GuardianMaua_WebHackingLab repository,
 
 ```bash
 python -m venv venv
-venv/Scripts/activate
+venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
 3. Run the following command to start the server:
 ```bash
-python3 $path_to_exercise\\app.py
+python3 $path_to_exercise\app.py
 ```
 
 - _ex:_
 ```bash
-python3 0_piloto\\ex0\\app.py
+python3 0_piloto\ex0\app.py
 ```
 
 4. Open the browser and navigate to the following URL:
