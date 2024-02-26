@@ -20,7 +20,7 @@ def encrypt_base64(text):
 def decrypt_base64(text):
     return base64.b64decode(text.encode('utf-8')).decode('utf-8')
 
-hash_user = "YWRtaW4"
+hash_user = "YWRtaW4="
 hash_pass = "7e1d832cf135a97fd7bee2b10a8dac7e7c0d370c97142b7d5d63b34e504b0e21"
 
 session = {
@@ -42,9 +42,12 @@ def create_account():
     if request.method == 'POST':
         # Criar usuário
         username_encrypted = encrypt_base64(request.form['username'])
-        if session['db'].get(username_encrypted) != None:
+        print(username_encrypted)
+        print(session['db'])
+        if session['db'].get(username_encrypted, None) != None:
+            print("salve")
             return render_template('create_account.html', message='Username already exists.')
-        session['db'][encrypt_base64(request.form['username'])] = encrypt_sha256(request.form['password'])
+        session['db'][username_encrypted] = encrypt_sha256(request.form['password'])
         
         response = make_response(render_template("index.html"))
         response.set_cookie("session", encrypt_base64(request.form['username']))
