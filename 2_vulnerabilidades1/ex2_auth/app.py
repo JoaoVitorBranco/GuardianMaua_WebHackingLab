@@ -47,7 +47,6 @@ def create_account():
         print(username_encrypted)
         print(session['db'])
         if session['db'].get(username_encrypted, None) != None:
-            print("salve")
             return render_template('create_account.html', message='Username already exists.')
         session['db'][username_encrypted] = encrypt_sha256(request.form['password'])
         
