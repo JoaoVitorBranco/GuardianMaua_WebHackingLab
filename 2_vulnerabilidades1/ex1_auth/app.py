@@ -21,7 +21,7 @@ def senha_resetada():
     output = request.args.get('output', '')  # Obter o output da query parameter
     if output == "Parabéns, você completou o exercício 1 😎":
         return output
-    return f'Senha resetada para  {output}'
+    return f'Senha resetada para {output}'
 
 if __name__ == '__main__':
     app.run(debug=True)

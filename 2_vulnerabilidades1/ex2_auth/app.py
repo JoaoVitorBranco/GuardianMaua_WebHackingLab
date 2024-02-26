@@ -41,26 +41,24 @@ def index():
 def create_account():
     if request.method == 'POST':
         # Criar usuário
+        username_encrypted = encrypt_base64(request.form['username'])
+        if session['db'].get(username_encrypted) != None:
+            return render_template('create_account.html', message='Username already exists.')
         session['db'][encrypt_base64(request.form['username'])] = encrypt_sha256(request.form['password'])
         
         response = make_response(render_template("index.html"))
         response.set_cookie("session", encrypt_base64(request.form['username']))
         
-        print("Criando conta.. banco = " + str(session))
         
         # Redirecionar para a página de login
         return response
-    return render_template('create_account.html')
+    return render_template('create_account.html', message="")
 
 # Rota para o processamento do login
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == "POST":
-        print("Tentando logar.. ================================ ")
-        print(session['db'])
-        print(encrypt_base64(request.form['username']))
         if session['db'].get(encrypt_base64(request.form['username'])) != None:
-            print("Usuário encontrado.. banco = " + str(session))
             if session['db'][encrypt_base64(request.form['username'])] == encrypt_sha256(request.form['password']):
                 return f"Login com sucesso na conta {request.form['username']}"
             else:
