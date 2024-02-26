@@ -71,7 +71,7 @@ def login():
              return render_template('index.html', message='Invalid username or password.')
          
     elif request.method == "GET":
-        if request.cookies.get("session", "") == hash_user:
+        if unquote(request.cookies.get("session", "")) == hash_user:
             return "Parabéns, você completou o exercício 2 😎"
         elif request.cookies.get("session", "") in session['db'].keys():
             return f"Login com sucesso na conta {decrypt_base64(request.cookies.get('session', ''))}"
