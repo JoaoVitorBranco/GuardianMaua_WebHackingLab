@@ -1,6 +1,8 @@
 import hashlib
 from flask import Flask, render_template, request, session, make_response
 import base64
+from urllib.parse import unquote
+
 
 def encrypt_sha256(text):
     # Cria um objeto de hash SHA-256
@@ -61,7 +63,7 @@ def create_account():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == "POST":
-        if session['db'].get(encrypt_base64(request.form['username'])) != None:
+        if unquote(session['db'].get(encrypt_base64(request.form['username']))) != None:
             if session['db'][encrypt_base64(request.form['username'])] == encrypt_sha256(request.form['password']):
                 return f"Login com sucesso na conta {request.form['username']}"
             else:

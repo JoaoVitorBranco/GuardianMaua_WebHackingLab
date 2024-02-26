@@ -25,14 +25,13 @@ def go_to_admin():
 def index():
     return render_template('index.html', message='')
 
-@app.route('/admin')
+@app.route('/admin', strict_slashes=True)
 def admin():
-    print(request.base_url)
     if encrypt_sha256(request.cookies.get('session', "cookie")) == cookie:
         return go_to_admin()
     return "Acesso negado"
 
-@app.route('/<path:path>')
+@app.route('/<path:path>', strict_slashes=True)
 def any_other_route(path):
     print(request.base_url)
     path = '/'.join(request.base_url.split('/')[3:]).lower() # ex: in http://google.com/images, path = images
