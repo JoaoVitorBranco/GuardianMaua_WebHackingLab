@@ -7,19 +7,34 @@ Explore simulated server scenarios in the GuardianMaua_WebHackingLab repository,
 3. Run the foloowing commands to setup the repository:
 
 ```bash
+# Windows
 python -m venv venv
 venv\Scripts\activate
+pip install -r requirements.txt
+
+# Linux / Mac
+python -m venv venv
+source venv/bin/activate
 pip install -r requirements.txt
 ```
 
 3. Run the following command to start the server:
+
 ```bash
+# Windows
 python $path_to_exercise\app.py
+
+# Linux / Mac
+python $path_to_exercise/app.py
 ```
 
 - _ex:_
 ```bash
+# Windows
 python 0_piloto\ex0\app.py
+
+# Linux / Mac
+python 0_piloto/ex0/app.py
 ```
 
 4. Open the browser and navigate to the following URL:
