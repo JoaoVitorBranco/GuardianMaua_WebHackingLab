@@ -3,7 +3,7 @@ import os
 
 app = Flask(__name__)
 
-with open("3_vulnerabilidades2/ex0_rce/output/output.txt", "w") as f:
+with open("4_vulnerabilidades2/ex0_rce/output/output.txt", "w") as f:
  f.write("") 
 
 comments = []
@@ -15,9 +15,9 @@ def index():
 @app.route('/add_comment', methods=['POST'])
 def add_comment():
     comment = request.form['comment']
-    os.system(f'echo "{comment}" >> 3_vulnerabilidades2/ex0_rce/output/output.txt')
+    os.system(f'echo "{comment}" >> 4_vulnerabilidades2/ex0_rce/output/output.txt')
     try:
-      with open("3_vulnerabilidades2/ex0_rce/output/output.txt", "r") as f:
+      with open("4_vulnerabilidades2/ex0_rce/output/output.txt", "r") as f:
         lines = f.readlines()
         return jsonify({'success': True, 'comment': lines[len(lines)-1]})
     except Exception as err:
